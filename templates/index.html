@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de Integrales - Método de Simpson</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1><i class="fas fa-calculator"></i> Calculadora de Integrales</h1>
+      <p class="subtitle">Método de Simpson para Integrales Definidas</p>
+    </header>
+
+    <div class="calculator-grid">
+      <!-- Integrales Simples (1D) -->
+      <div class="calculator-section">
+        <h2><i class="fas fa-chart-line"></i> Integrales Simples (1D)</h2>
+        <!-- Área bajo curva -->
+        <div class="calculator-card">
+          <h3>Área bajo curva</h3>
+          <form id="form-area-curva">
+            <div class="input-group">
+              <label>Función f(x):</label>
+              <input type="text" id="funcion-area" placeholder="x**2 + 2*x + 1" required>
+              <small>Ej: x**2, sin(x), exp(x), etc.</small>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>Límite inferior (a):</label>
+                <input type="number" id="a-area" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>Límite superior (b):</label>
+                <input type="number" id="b-area" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Área
+            </button>
+          </form>
+        </div>
+        <!-- Área entre curvas -->
+        <div class="calculator-card">
+          <h3>Área entre curvas</h3>
+          <form id="form-area-entre">
+            <div class="input-group">
+              <label>Primera f₁(x):</label>
+              <input type="text" id="funcion1-entre" placeholder="x**2" required>
+            </div>
+            <div class="input-group">
+              <label>Segunda f₂(x):</label>
+              <input type="text" id="funcion2-entre" placeholder="2*x" required>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>a:</label>
+                <input type="number" id="a-entre" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>b:</label>
+                <input type="number" id="b-entre" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Área
+            </button>
+          </form>
+        </div>
+        <!-- Longitud de arco -->
+        <div class="calculator-card">
+          <h3>Longitud de arco</h3>
+          <form id="form-longitud">
+            <div class="input-group">
+              <label>Función f(x):</label>
+              <input type="text" id="funcion-longitud" placeholder="x**2" required>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>a:</label>
+                <input type="number" id="a-longitud" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>b:</label>
+                <input type="number" id="b-longitud" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Longitud
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Integrales Dobles (2D) -->
+      <div class="calculator-section">
+        <h2><i class="fas fa-cube"></i> Integrales Dobles (2D)</h2>
+        <!-- Volumen bajo superficie -->
+        <div class="calculator-card">
+          <h3>Volumen bajo superficie</h3>
+          <form id="form-volumen-superficie">
+            <div class="input-group">
+              <label>Función f(x,y):</label>
+              <input type="text" id="funcion-volumen" placeholder="x**2 + y**2" required>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>x inferior:</label>
+                <input type="number" id="xa-volumen" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>x superior:</label>
+                <input type="number" id="xb-volumen" step="any" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>y inferior:</label>
+                <input type="number" id="ya-volumen" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>y superior:</label>
+                <input type="number" id="yb-volumen" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Volumen
+            </button>
+          </form>
+        </div>
+        <!-- Área de región plana -->
+        <div class="calculator-card">
+          <h3>Área de región plana</h3>
+          <form id="form-area-region">
+            <div class="input-row">
+              <div class="input-group">
+                <label>x inferior:</label>
+                <input type="number" id="xa-region" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>x superior:</label>
+                <input type="number" id="xb-region" step="any" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>y inferior:</label>
+                <input type="number" id="ya-region" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>y superior:</label>
+                <input type="number" id="yb-region" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Área
+            </button>
+          </form>
+        </div>
+        <!-- Área de superficie -->
+        <div class="calculator-card">
+          <h3>Área de superficie</h3>
+          <form id="form-area-superficie">
+            <div class="input-group">
+              <label>z = f(x,y):</label>
+              <input type="text" id="funcion-superficie" placeholder="x**2 + y**2" required>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>x inferior:</label>
+                <input type="number" id="xa-superficie" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>x superior:</label>
+                <input type="number" id="xb-superficie" step="any" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>y inferior:</label>
+                <input type="number" id="ya-superficie" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>y superior:</label>
+                <input type="number" id="yb-superficie" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Área
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Integrales Triples (3D) -->
+      <div class="calculator-section">
+        <h2><i class="fas fa-shapes"></i> Integrales Triples (3D)</h2>
+        <!-- Volumen de sólido -->
+        <div class="calculator-card">
+          <h3>Volumen de sólido</h3>
+          <form id="form-volumen-solido">
+            <div class="input-row">
+              <div class="input-group">
+                <label>x inferior:</label>
+                <input type="number" id="xa-solido" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>x superior:</label>
+                <input type="number" id="xb-solido" step="any" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>y inferior:</label>
+                <input type="number" id="ya-solido" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>y superior:</label>
+                <input type="number" id="yb-solido" step="any" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>z inferior:</label>
+                <input type="number" id="za-solido" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>z superior:</label>
+                <input type="number" id="zb-solido" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Volumen
+            </button>
+          </form>
+        </div>
+        <!-- Centro de masa -->
+        <div class="calculator-card">
+          <h3>Centro de masa</h3>
+          <form id="form-centro-masa">
+            <div class="input-group">
+              <label>Densidad ρ(x,y,z):</label>
+              <input type="text" id="densidad-masa" placeholder="1" required>
+              <small>Ej: 1, x+y+z, etc.</small>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>x inferior:</label>
+                <input type="number" id="xa-masa" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>x superior:</label>
+                <input type="number" id="xb-masa" step="any" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>y inferior:</label>
+                <input type="number" id="ya-masa" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>y superior:</label>
+                <input type="number" id="yb-masa" step="any" required>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>z inferior:</label>
+                <input type="number" id="za-masa" step="any" required>
+              </div>
+              <div class="input-group">
+                <label>z superior:</label>
+                <input type="number" id="zb-masa" step="any" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-calculate">
+              <i class="fas fa-play"></i> Calcular Centro de Masa
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="results-area" id="results-area" style="display:none;">
+      <h2><i class="fas fa-chart-bar"></i> Resultados</h2>
+      <div id="results-content"></div>
+    </div>
+
+    <!-- Ejemplos de uso -->
+    <div class="examples-section">
+      <h2><i class="fas fa-lightbulb"></i> Ejemplos de Uso</h2>
+      <!-- Mantén aquí tu grid de ejemplos -->
+    </div>
+  </div>
+
+  <script>
+    // Función de loading y mostrar resultado (idéntica a la tuya)
+    function showLoading() {
+      const ra = document.getElementById('results-area');
+      const rc = document.getElementById('results-content');
+      rc.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i> Calculando…</div>';
+      ra.style.display = 'block';
+      ra.scrollIntoView({ behavior: 'smooth' });
+    }
+    function showResult(data, title, type) {
+      const rc = document.getElementById('results-content');
+      if (data.error) {
+        rc.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> ${data.error}</div>`;
+        return;
+      }
+      let html = `<div class="result-card"><h3>${title}</h3>`;
+      if (type==='centro_masa') {
+        html += 
+          `<div class="mass-info"><h4>Masa Total</h4><div class="result-value">${data.masa.toFixed(6)}</div></div>
+           <div class="center-info"><h4>Centro de Masa</h4>
+             <div class="coordinate"><span>x:</span><span>${data.centro_masa[0].toFixed(6)}</span></div>
+             <div class="coordinate"><span>y:</span><span>${data.centro_masa[1].toFixed(6)}</span></div>
+             <div class="coordinate"><span>z:</span><span>${data.centro_masa[2].toFixed(6)}</span></div>
+           </div>`;
+      } else {
+        html += `<div class="result-value">${data.resultado.toFixed(6)}</div>`;
+      }
+      if (data.grafico) {
+        html += `<div class="result-graph"><img src="data:image/png;base64,${data.grafico}"></div>`;
+      }
+      html += '</div>';
+      rc.innerHTML = html;
+    }
+    async function enviarCalculo(datos, title, type) {
+      showLoading();
+      try {
+        const res = await fetch('/calcular', {
+          method: 'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(datos)
+        });
+        const json = await res.json();
+        showResult(json, title, type);
+      } catch(err) {
+        document.getElementById('results-content').innerHTML =
+          `<div class="error"><i class="fas fa-exclamation-triangle"></i> ${err.message}</div>`;
+      }
+    }
+
+    // Listeners para cada formulario
+    document.getElementById('form-area-curva').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'area_bajo_curva',
+        funcion:document.getElementById('funcion-area').value,
+        a:document.getElementById('a-area').value,
+        b:document.getElementById('b-area').value
+      }, 'Área bajo la curva','simple');
+    });
+    document.getElementById('form-area-entre').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'area_entre_curvas',
+        funcion1:document.getElementById('funcion1-entre').value,
+        funcion2:document.getElementById('funcion2-entre').value,
+        a:document.getElementById('a-entre').value,
+        b:document.getElementById('b-entre').value
+      }, 'Área entre curvas','simple');
+    });
+    document.getElementById('form-longitud').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'longitud_arco',
+        funcion:document.getElementById('funcion-longitud').value,
+        a:document.getElementById('a-longitud').value,
+        b:document.getElementById('b-longitud').value
+      }, 'Longitud de arco','simple');
+    });
+    document.getElementById('form-volumen-superficie').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'volumen_bajo_superficie',
+        funcion:document.getElementById('funcion-volumen').value,
+        xa:document.getElementById('xa-volumen').value,
+        xb:document.getElementById('xb-volumen').value,
+        ya:document.getElementById('ya-volumen').value,
+        yb:document.getElementById('yb-volumen').value
+      }, 'Volumen bajo superficie','doble');
+    });
+    document.getElementById('form-area-region').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'area_region_plana',
+        xa:document.getElementById('xa-region').value,
+        xb:document.getElementById('xb-region').value,
+        ya:document.getElementById('ya-region').value,
+        yb:document.getElementById('yb-region').value
+      }, 'Área de región plana','doble');
+    });
+    document.getElementById('form-area-superficie').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'area_superficie',
+        funcion:document.getElementById('funcion-superficie').value,
+        xa:document.getElementById('xa-superficie').value,
+        xb:document.getElementById('xb-superficie').value,
+        ya:document.getElementById('ya-superficie').value,
+        yb:document.getElementById('yb-superficie').value
+      }, 'Área de superficie','doble');
+    });
+    document.getElementById('form-volumen-solido').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'volumen_solido',
+        xa:document.getElementById('xa-solido').value,
+        xb:document.getElementById('xb-solido').value,
+        ya:document.getElementById('ya-solido').value,
+        yb:document.getElementById('yb-solido').value,
+        za:document.getElementById('za-solido').value,
+        zb:document.getElementById('zb-solido').value
+      }, 'Volumen del sólido','triple');
+    });
+    document.getElementById('form-centro-masa').addEventListener('submit', e=>{
+      e.preventDefault();
+      enviarCalculo({
+        tipo:'centro_masa',
+        densidad:document.getElementById('densidad-masa').value,
+        xa:document.getElementById('xa-masa').value,
+        xb:document.getElementById('xb-masa').value,
+        ya:document.getElementById('ya-masa').value,
+        yb:document.getElementById('yb-masa').value,
+        za:document.getElementById('za-masa').value,
+        zb:document.getElementById('zb-masa').value
+      }, 'Centro de masa','centro_masa');
+    });
+  </script>
+</body>
+</html>
