@@ -130,35 +130,74 @@
             </button>
           </form>
         </div>
-        <!-- Área de región plana -->
-        <div class="calculator-card">
-          <h3>Área de región plana</h3>
-          <form id="form-area-region">
-            <div class="input-row">
-              <div class="input-group">
-                <label>x inferior:</label>
-                <input type="number" id="xa-region" step="any" required>
-              </div>
-              <div class="input-group">
-                <label>x superior:</label>
-                <input type="number" id="xb-region" step="any" required>
-              </div>
-            </div>
-            <div class="input-row">
-              <div class="input-group">
-                <label>y inferior:</label>
-                <input type="number" id="ya-region" step="any" required>
-              </div>
-              <div class="input-group">
-                <label>y superior:</label>
-                <input type="number" id="yb-region" step="any" required>
-              </div>
-            </div>
-            <button type="submit" class="btn-calculate">
-              <i class="fas fa-play"></i> Calcular Área
-            </button>
-          </form>
-        </div>
+     <!-- Área de región plana -->
+<div class="calculator-card">
+  <h3>Área de región plana</h3>
+  <form id="form-area-region">
+    <div class="input-group">
+      <label>Función f(x,y):</label>
+      <input type="text" id="funcion-region" placeholder="1" required>
+      <small>Ej: 1, x+y, x*y, etc.</small>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>x inferior:</label>
+        <input type="number" id="xa-region" step="any" required>
+      </div>
+      <div class="input-group">
+        <label>x superior:</label>
+        <input type="number" id="xb-region" step="any" required>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>y inferior:</label>
+        <input type="number" id="ya-region" step="any" required>
+      </div>
+      <div class="input-group">
+        <label>y superior:</label>
+        <input type="number" id="yb-region" step="any" required>
+      </div>
+    </div>
+    <button type="submit" class="btn-calculate">
+      <i class="fas fa-play"></i> Calcular Área
+    </button>
+  </form>
+</div>
+
+<div class="calculator-card">
+  <h3>Área en polares</h3>
+  <form id="form-area-polar">
+    <div class="input-group">
+      <label>Función f(r,θ):</label>
+      <input type="text" id="funcion-polar" placeholder="1, r**2*sin(theta), etc." required>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>r inferior (rᵢ):</label>
+        <input type="number" id="ri" step="any" required>
+      </div>
+      <div class="input-group">
+        <label>r superior (rₛ):</label>
+        <input type="number" id="rs" step="any" required>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>θ inferior (θᵢ) [rad]:</label>
+        <input type="number" id="ti" step="any" required>
+      </div>
+      <div class="input-group">
+        <label>θ superior (θₛ) [rad]:</label>
+        <input type="number" id="tf" step="any" required>
+      </div>
+    </div>
+    <button type="submit" class="btn-calculate">
+      <i class="fas fa-play"></i> Calcular Área
+    </button>
+  </form>
+</div>
+
         <!-- Área de superficie -->
         <div class="calculator-card">
           <h3>Área de superficie</h3>
@@ -194,48 +233,64 @@
         </div>
       </div>
 
+
       <!-- Integrales Triples (3D) -->
       <div class="calculator-section">
         <h2><i class="fas fa-shapes"></i> Integrales Triples (3D)</h2>
         <!-- Volumen de sólido -->
-        <div class="calculator-card">
-          <h3>Volumen de sólido</h3>
-          <form id="form-volumen-solido">
-            <div class="input-row">
-              <div class="input-group">
-                <label>x inferior:</label>
-                <input type="number" id="xa-solido" step="any" required>
-              </div>
-              <div class="input-group">
-                <label>x superior:</label>
-                <input type="number" id="xb-solido" step="any" required>
-              </div>
-            </div>
-            <div class="input-row">
-              <div class="input-group">
-                <label>y inferior:</label>
-                <input type="number" id="ya-solido" step="any" required>
-              </div>
-              <div class="input-group">
-                <label>y superior:</label>
-                <input type="number" id="yb-solido" step="any" required>
-              </div>
-            </div>
-            <div class="input-row">
-              <div class="input-group">
-                <label>z inferior:</label>
-                <input type="number" id="za-solido" step="any" required>
-              </div>
-              <div class="input-group">
-                <label>z superior:</label>
-                <input type="number" id="zb-solido" step="any" required>
-              </div>
-            </div>
-            <button type="submit" class="btn-calculate">
-              <i class="fas fa-play"></i> Calcular Volumen
-            </button>
-          </form>
-        </div>
+
+<div class="calculator-card">
+  <h3>Volumen de sólido</h3>
+  <form id="form-volumen-solido">
+    <!-- Función integrando -->
+    <div class="input-group">
+      <label>Función f(x,y,z):</label>
+      <input type="text" id="funcion-solido" placeholder="1" required>
+      <small>Ej: 1, x*y*z, x**2 + y + z, etc.</small>
+    </div>
+
+    <!-- Límites en x -->
+    <div class="input-row">
+      <div class="input-group">
+        <label>x inferior:</label>
+        <input type="number" id="xa-solido" step="any" required>
+      </div>
+      <div class="input-group">
+        <label>x superior:</label>
+        <input type="number" id="xb-solido" step="any" required>
+      </div>
+    </div>
+
+    <!-- Límites en y -->
+    <div class="input-row">
+      <div class="input-group">
+        <label>y inferior:</label>
+        <input type="number" id="ya-solido" step="any" required>
+      </div>
+      <div class="input-group">
+        <label>y superior:</label>
+        <input type="number" id="yb-solido" step="any" required>
+      </div>
+    </div>
+
+    <!-- Límites en z -->
+    <div class="input-row">
+      <div class="input-group">
+        <label>z inferior:</label>
+        <input type="number" id="za-solido" step="any" required>
+      </div>
+      <div class="input-group">
+        <label>z superior:</label>
+        <input type="number" id="zb-solido" step="any" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-calculate">
+      <i class="fas fa-play"></i> Calcular Volumen
+    </button>
+  </form>
+</div>
+
         <!-- Centro de masa -->
         <div class="calculator-card">
           <h3>Centro de masa</h3>
@@ -305,30 +360,47 @@
       ra.style.display = 'block';
       ra.scrollIntoView({ behavior: 'smooth' });
     }
-    function showResult(data, title, type) {
-      const rc = document.getElementById('results-content');
-      if (data.error) {
-        rc.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> ${data.error}</div>`;
-        return;
-      }
-      let html = `<div class="result-card"><h3>${title}</h3>`;
-      if (type==='centro_masa') {
-        html += 
-          `<div class="mass-info"><h4>Masa Total</h4><div class="result-value">${data.masa.toFixed(6)}</div></div>
-           <div class="center-info"><h4>Centro de Masa</h4>
-             <div class="coordinate"><span>x:</span><span>${data.centro_masa[0].toFixed(6)}</span></div>
-             <div class="coordinate"><span>y:</span><span>${data.centro_masa[1].toFixed(6)}</span></div>
-             <div class="coordinate"><span>z:</span><span>${data.centro_masa[2].toFixed(6)}</span></div>
-           </div>`;
-      } else {
-        html += `<div class="result-value">${data.resultado.toFixed(6)}</div>`;
-      }
-      if (data.grafico) {
-        html += `<div class="result-graph"><img src="data:image/png;base64,${data.grafico}"></div>`;
-      }
-      html += '</div>';
-      rc.innerHTML = html;
-    }
+  function showResult(data, title, type) {
+  const rc = document.getElementById('results-content');
+  if (data.error) {
+    rc.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> ${data.error}</div>`;
+    return;
+  }
+
+  let html = `<div class="result-card"><h3>${title}</h3>`;
+
+  if (type === 'centro_masa') {
+    html += `
+      <div class="mass-info">
+        <h4>Masa Total</h4>
+        <div class="result-value">${data.masa.toFixed(6)}</div>
+      </div>
+      <div class="center-info">
+        <h4>Centro de Masa</h4>
+        <div class="coordinate"><span>x:</span><span>${data.centro_masa[0].toFixed(6)}</span></div>
+        <div class="coordinate"><span>y:</span><span>${data.centro_masa[1].toFixed(6)}</span></div>
+        <div class="coordinate"><span>z:</span><span>${data.centro_masa[2].toFixed(6)}</span></div>
+      </div>`;
+  } else {
+    html += `<div class="result-value">${data.resultado.toFixed(6)}</div>`;
+  }
+
+  // **Pinta cualquier gráfico que venga en data.grafico**
+  if (data.grafico) {
+    // elegimos MIME según sea GIF (centro_masa) o PNG (cualquiera más)
+    const mime = (type === 'centro_masa') ? 'image/gif' : 'image/png';
+    html += `
+      <div class="result-graph">
+        <img src="data:${mime};base64,${data.grafico}" alt="${title}">
+      </div>`;
+  }
+
+  html += `</div>`;
+  rc.innerHTML = html;
+}
+
+
+
     async function enviarCalculo(datos, title, type) {
       showLoading();
       try {
@@ -385,16 +457,29 @@
         yb:document.getElementById('yb-volumen').value
       }, 'Volumen bajo superficie','doble');
     });
-    document.getElementById('form-area-region').addEventListener('submit', e=>{
+    document.getElementById('form-area-region').addEventListener('submit', e => {
       e.preventDefault();
       enviarCalculo({
-        tipo:'area_region_plana',
-        xa:document.getElementById('xa-region').value,
-        xb:document.getElementById('xb-region').value,
-        ya:document.getElementById('ya-region').value,
-        yb:document.getElementById('yb-region').value
+        tipo: 'area_region_plana',
+        funcion:   document.getElementById('funcion-region').value,  // <-- nuevo
+        xa:        document.getElementById('xa-region').value,
+        xb:        document.getElementById('xb-region').value,
+        ya:        document.getElementById('ya-region').value,
+        yb:        document.getElementById('yb-region').value
       }, 'Área de región plana','doble');
     });
+
+document.getElementById('form-area-polar').addEventListener('submit', e => {
+    e.preventDefault();
+    enviarCalculo({
+      tipo:    'area_region_polar',
+      funcion: document.getElementById('funcion-polar').value,
+      ri:      document.getElementById('ri').value,
+      rs:      document.getElementById('rs').value,
+      ti:      document.getElementById('ti').value,
+      tf:      document.getElementById('tf').value
+    }, 'Área en polares', 'polar');
+  });
     document.getElementById('form-area-superficie').addEventListener('submit', e=>{
       e.preventDefault();
       enviarCalculo({
@@ -406,18 +491,21 @@
         yb:document.getElementById('yb-superficie').value
       }, 'Área de superficie','doble');
     });
+
     document.getElementById('form-volumen-solido').addEventListener('submit', e=>{
       e.preventDefault();
       enviarCalculo({
-        tipo:'volumen_solido',
-        xa:document.getElementById('xa-solido').value,
-        xb:document.getElementById('xb-solido').value,
-        ya:document.getElementById('ya-solido').value,
-        yb:document.getElementById('yb-solido').value,
-        za:document.getElementById('za-solido').value,
-        zb:document.getElementById('zb-solido').value
+        tipo:    'volumen_solido',
+        funcion: document.getElementById('funcion-solido').value,  // <-- aquí
+        xa:      document.getElementById('xa-solido').value,
+        xb:      document.getElementById('xb-solido').value,
+        ya:      document.getElementById('ya-solido').value,
+        yb:      document.getElementById('yb-solido').value,
+        za:      document.getElementById('za-solido').value,
+        zb:      document.getElementById('zb-solido').value
       }, 'Volumen del sólido','triple');
     });
+
     document.getElementById('form-centro-masa').addEventListener('submit', e=>{
       e.preventDefault();
       enviarCalculo({
