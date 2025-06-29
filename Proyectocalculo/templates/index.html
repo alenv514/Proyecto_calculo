@@ -520,35 +520,5 @@ document.getElementById('form-area-polar').addEventListener('submit', e => {
       }, 'Centro de masa','centro_masa');
     });
   </script>
-  <script>
-    // Restrict input characters for function input fields
-    const allowedChars = /^[0-9+\-*/^()., a-z]+$/i;
-
-    function validateInput(event) {
-      const input = event.target;
-      const value = input.value;
-      if (!allowedChars.test(value)) {
-        // Remove last invalid character
-        input.value = value.slice(0, -1);
-      }
-    }
-
-    const functionInputs = [
-      'funcion-area',
-      'funcion1-entre',
-      'funcion2-entre',
-      'funcion-longitud',
-      'funcion-volumen',
-      'funcion-superficie',
-      'densidad-masa'
-    ];
-
-    functionInputs.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.addEventListener('input', validateInput);
-      }
-    });
-  </script>
 </body>
 </html>
