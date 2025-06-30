@@ -13,7 +13,55 @@
       <h1><i class="fas fa-calculator"></i> Calculadora de Integrales</h1>
       <p class="subtitle">Método de Simpson para Integrales Definidas</p>
     </header>
+    
+    <button id="openManual" class="btn-manual">
+      <i class="fas fa-book"></i> Manual de Usuario
+    </button>
+    <div id="manualModal" class="modal">
+      <div class="modal-content">
+      <span class="close">&times;</span>
 
+      <h2>Manual de Usuario</h2>
+      <p>Bienvenido a la Calculadora de Integrales. Aquí encontrarás cómo usar cada sección:</p>
+      <ul>
+        <li><strong>Integrales Simples (1D):</strong> Ingresa la función en Python (<code>x**2</code>, <code>sin(x)</code>, …), luego los límites “a” y “b” y pulsa “Calcular Área/Longitud”.</li>
+        <li><strong>Integrales Dobles (2D) y Triples (3D):</strong> Igual que en 1D, pero definiendo los límites en cada variable.</li>
+        <li><strong>Resultados:</strong> Se mostrarán en la sección “Resultados” con el valor numérico y, si aplica, la gráfica.</li>
+      </ul>
+
+      <h3>Requisitos del entorno</h3>
+      <p>Para levantar esta aplicación necesitas un entorno Python con:</p>
+      <ul>
+        <li>Flask == 2.3.3</li>
+        <li>numpy == 1.24.3</li>
+        <li>matplotlib == 3.7.2</li>
+        <li>sympy == 1.12</li>
+        <li>Werkzeug == 2.3.7</li>
+      </ul>
+      <p>Instálalos con:</p>
+      <pre><code>pip install -r requirements.txt</code></pre>
+
+      <h3>Cómo ejecutar la aplicación</h3>
+      <ol>
+        <li>Abre una terminal en la carpeta del proyecto.</li>
+        <li>Crea y activa un entorno virtual (si no lo has hecho):  
+          <pre><code>python -m venv venv
+  # Windows
+  venv\Scripts\activate
+  # macOS/Linux
+  source venv/bin/activate
+  </code></pre>
+        </li>
+        <li>Instala las dependencias:  
+          <pre><code>pip install -r requirements.txt</code></pre>
+        </li>
+        <li>Arranca el servidor:  
+          <pre><code>python app.py</code></pre>
+        </li>
+        <li>Abre tu navegador en <code>http://127.0.0.1:5000</code> para ver la aplicación.</li>
+      </ol>
+    </div>
+  </div>
     <div class="calculator-grid">
       <!-- Integrales Simples (1D) -->
       <div class="calculator-section">
@@ -130,73 +178,73 @@
             </button>
           </form>
         </div>
-     <!-- Área de región plana -->
-<div class="calculator-card">
-  <h3>Área de región plana</h3>
-  <form id="form-area-region">
-    <div class="input-group">
-      <label>Función f(x,y):</label>
-      <input type="text" id="funcion-region" placeholder="1" required>
-      <small>Ej: 1, x+y, x*y, etc.</small>
-    </div>
-    <div class="input-row">
-      <div class="input-group">
-        <label>x inferior:</label>
-        <input type="number" id="xa-region" step="any" required>
+        <!-- Área de región plana -->
+      <div class="calculator-card">
+        <h3>Área de región plana</h3>
+        <form id="form-area-region">
+          <div class="input-group">
+            <label>Función f(x,y):</label>
+            <input type="text" id="funcion-region" placeholder="1" required>
+            <small>Ej: 1, x+y, x*y, etc.</small>
+          </div>
+          <div class="input-row">
+            <div class="input-group">
+              <label>x inferior:</label>
+              <input type="number" id="xa-region" step="any" required>
+            </div>
+            <div class="input-group">
+              <label>x superior:</label>
+              <input type="number" id="xb-region" step="any" required>
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="input-group">
+              <label>y inferior:</label>
+              <input type="number" id="ya-region" step="any" required>
+            </div>
+            <div class="input-group">
+              <label>y superior:</label>
+              <input type="number" id="yb-region" step="any" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-calculate">
+            <i class="fas fa-play"></i> Calcular Área
+          </button>
+        </form>
       </div>
-      <div class="input-group">
-        <label>x superior:</label>
-        <input type="number" id="xb-region" step="any" required>
-      </div>
-    </div>
-    <div class="input-row">
-      <div class="input-group">
-        <label>y inferior:</label>
-        <input type="number" id="ya-region" step="any" required>
-      </div>
-      <div class="input-group">
-        <label>y superior:</label>
-        <input type="number" id="yb-region" step="any" required>
-      </div>
-    </div>
-    <button type="submit" class="btn-calculate">
-      <i class="fas fa-play"></i> Calcular Área
-    </button>
-  </form>
-</div>
 
-<div class="calculator-card">
-  <h3>Área en polares</h3>
-  <form id="form-area-polar">
-    <div class="input-group">
-      <label>Función f(r,θ):</label>
-      <input type="text" id="funcion-polar" placeholder="1, r**2*sin(theta), etc." required>
-    </div>
-    <div class="input-row">
-      <div class="input-group">
-        <label>r inferior (rᵢ):</label>
-        <input type="number" id="ri" step="any" required>
+      <div class="calculator-card">
+        <h3>Área en polares</h3>
+        <form id="form-area-polar">
+          <div class="input-group">
+            <label>Función f(r,θ):</label>
+            <input type="text" id="funcion-polar" placeholder="1, r**2*sin(theta), etc." required>
+          </div>
+          <div class="input-row">
+            <div class="input-group">
+              <label>r inferior (rᵢ):</label>
+              <input type="number" id="ri" step="any" required>
+            </div>
+            <div class="input-group">
+              <label>r superior (rₛ):</label>
+              <input type="number" id="rs" step="any" required>
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="input-group">
+              <label>θ inferior (θᵢ) [rad]:</label>
+              <input type="number" id="ti" step="any" required>
+            </div>
+            <div class="input-group">
+              <label>θ superior (θₛ) [rad]:</label>
+              <input type="number" id="tf" step="any" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-calculate">
+            <i class="fas fa-play"></i> Calcular Área
+          </button>
+        </form>
       </div>
-      <div class="input-group">
-        <label>r superior (rₛ):</label>
-        <input type="number" id="rs" step="any" required>
-      </div>
-    </div>
-    <div class="input-row">
-      <div class="input-group">
-        <label>θ inferior (θᵢ) [rad]:</label>
-        <input type="number" id="ti" step="any" required>
-      </div>
-      <div class="input-group">
-        <label>θ superior (θₛ) [rad]:</label>
-        <input type="number" id="tf" step="any" required>
-      </div>
-    </div>
-    <button type="submit" class="btn-calculate">
-      <i class="fas fa-play"></i> Calcular Área
-    </button>
-  </form>
-</div>
 
         <!-- Área de superficie -->
         <div class="calculator-card">
@@ -519,6 +567,30 @@ document.getElementById('form-area-polar').addEventListener('submit', e => {
         zb:document.getElementById('zb-masa').value
       }, 'Centro de masa','centro_masa');
     });
+  // ...tus funciones showLoading(), showResult(), listeners de formularios, etc.
+
+  // ---------------------------
+  // Código para el modal
+  // ---------------------------
+  const openBtn = document.getElementById('openManual');
+  const modal   = document.getElementById('manualModal');
+  const closeEl = modal.querySelector('.close');
+
+  openBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+  });
+
+  closeEl.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+
   </script>
 </body>
 </html>
